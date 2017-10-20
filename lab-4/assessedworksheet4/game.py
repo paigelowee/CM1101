@@ -63,8 +63,8 @@ def normalise_input(user_input):
     """
     nopunct= remove_punct(user_input)
     nospaces= remove_spaces(nopunct)
-    laststring= nospaces.lower()
-    return laststring
+  
+    return " ".join(nospaces.split()).lower()
 
     
 def display_room(room):
@@ -199,9 +199,9 @@ def menu(exits):
     while True:
         print_menu(exits)
         user_input = input()
-        normalise_input(user_input)  
-        if is_valid_exit(exits, user_input):
-           return user_input
+        action = normalise_input(user_input)  
+        if is_valid_exit(exits, action):
+           return action
 
 
 def move(exits, direction):
